@@ -17,6 +17,7 @@ code {
 
 .navbar{
   position: fixed;
+  z-index: 100;
   top: 0px;
   right: 0px;
   left: 0px;
@@ -140,4 +141,55 @@ code {
 
 .article1-div > ul{
   padding: 0px;
+}
+
+.article2{
+  padding: 1em;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.article2 > h2{
+  font-size: 2rem;
+}
+
+.article2-section{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.article2-section-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  text-align: center;
+}
+
+.article3{
+  display: flex;
+  flex-direction: row;
+  padding: 2em 0em;
+  justify-content: center;
+  margin-top: 50px;
+  background-color: rgb(235, 243, 255);
+}
+
+.article3-section{
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+  margin-left: 20px;
+}
+
+.article3-section > h2{
+  font-size: 2rem;
+}
+
+.article3-section > p{
+  font-size: 1.5rem;
 }
