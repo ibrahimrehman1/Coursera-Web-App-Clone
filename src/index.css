@@ -11,3 +11,74 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* My CSS Code*/
+
+
+.navbar{
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  background-color: white;
+  padding: 1em 1.2em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+
+.coursera-logo{
+  width: 8em;
+  height: auto;
+}
+
+.navbar-btn{
+  background-color: #0056D2 !important;
+  height: 42px;
+  align-self: center;
+  /* margin-left: 10px !important; */
+}
+
+.navbar-btn2{
+  height: 42px;
+  align-self: center;
+  /* margin-left: 10px !important; */
+}
+
+.search-bar{
+  align-self: center;
+}
+
+
+.search-bar-btn{
+  background-color: #0056D2 !important;
+  height: 55px;
+  align-self: center;
+  z-index: 10;
+  left: -10px;
+  position: relative;
+}
+
+.nav-list > li{
+  display: inline;
+}
+
+.nav-list{
+  align-self: center;
+  padding-left: 0px;
+}
+
+.nav-list a{
+  text-decoration: none;
+  margin-left: 10px;
+  color: black;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.nav-list a:hover{
+  text-decoration: underline;
+  color: #0056D2;
+}
