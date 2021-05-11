@@ -4,10 +4,10 @@ import CourseraLogo from "../assets/CourseraLogo.png";
 import {Button, TextField} from "@material-ui/core"
 import SearchIcon from '@material-ui/icons/Search';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import GTranslateIcon from '@material-ui/icons/GTranslate';
+import AppleIcon from '@material-ui/icons/Apple';
+import { withStyles } from '@material-ui/core/styles';
 
 import {
     SwipeableDrawer, 
@@ -16,29 +16,48 @@ import {
     ListItemText, 
     Divider,
     ListSubheader,
-    FormControl,
-    InputLabel,
-    Input,
+    Menu,
+    MenuItem
 } from "@material-ui/core";
 import Modal from '@material-ui/core/Modal';
 
-
-
-function rand() {
-    return Math.round(Math.random() * 20) - 10;
-}
   
-// function getModalStyle() {
-//     const top = 50 + rand();
-//     const left = 50 + rand();
 
-//     return {
-//         top: `${top}%`,
-//         left: `${left}%`,
-//         transform: `translate(-${top}%, -${left}%)`,
-//     };
-// }
-  
+
+const StyledMenu = withStyles({
+  paper: {
+    border: '1px solid #d3d4d5',
+  },
+})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'center',
+    }}
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'center',
+    }}
+    {...props}
+  />
+));
+
+
+const StyledMenuItem = withStyles((theme) => ({
+  root: {
+    '&:focus': {
+      backgroundColor: theme.palette.primary.main,
+      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+        color: theme.palette.common.white,
+      },
+    },
+  },
+}))(MenuItem);
+
+
+
 const useStyles2 = makeStyles((theme) => ({
     paper: {
         margin: "auto",
@@ -65,6 +84,21 @@ const useStyles = makeStyles({
 
 
 function Navbar(){
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+
+
+
+
+
     const classes = useStyles();
     const [state, setState] = useState({
         top: false,
@@ -133,6 +167,22 @@ function Navbar(){
       const handleClose = () => {
         setOpen(false);
       };
+
+
+
+
+      const [open2, setOpen2] = React.useState(false);
+    
+      const handleOpen2 = () => {
+        setOpen2(true);
+      };
+    
+      const handleClose2 = () => {
+        setOpen2(false);
+      };
+
+
+
     
       const body = (
         <div className={classes2.paper}>
@@ -160,7 +210,7 @@ function Navbar(){
                     Continue With Facebook
                 </Button>
 
-                <p>Already on Coursera? <a href="#">Log In</a></p>
+                <p>Already on Coursera? <a href="#" onClick={(e)=>handleOpenCloseModals(e.target.innerText)}>Log In</a></p>
                 <a href="#">Sign Up with your Organization</a>
                 <p style={{marginTop: "30px", opacity: ".8"}}>I accept Coursera's Terms of Use and Privacy Notice. Having trouble logging in? Learner help center
                 <br></br>
@@ -174,15 +224,57 @@ This site is protected by reCAPTCHA Enterprise and the Google Privacy Policy and
       );
 
 
+      function handleOpenCloseModals(txt){
+        if (txt === "Sign Up"){
+          handleClose2()
+          handleOpen();
+        }else{
+          handleClose()
+          handleOpen2();
+        }
+      }
 
 
 
+      const body2 = (
+        <div className={classes2.paper}>
+            <section className="signup-form-section">
+                <h2>Welcome Back</h2>
+                
+                <TextField id="outlined-basic" label="name@gmail.com" variant="outlined" style={{marginTop: "25px", minWidth: "80%"}} />
+                
+                <TextField id="outlined-basic" label="Create Password" variant="outlined" style={{marginTop: "25px", minWidth: "80%"}}/>
 
+                <Button variant="contained" color="primary" style={{width: "80%", backgroundColor: "#0056D2", fontWeight: "400", marginTop: '30px', padding: ".9em"}}>
+                    Login
+                </Button>
 
+                <p>-or-</p>
 
+                <Button variant="outlined" style={{width: "80%", fontWeight: "400", marginTop: '10px', padding: ".9em"}} startIcon={<GTranslateIcon />}>
+                    Continue With Google
+                </Button>
 
+                <Button variant="outlined" style={{width: "80%", fontWeight: "400", marginTop: '10px', padding: ".9em"}} startIcon={<FacebookIcon />}>
+                    Continue With Facebook
+                </Button>
 
+                <Button variant="outlined" style={{width: "80%", fontWeight: "400", marginTop: '10px', padding: ".9em"}} startIcon={<AppleIcon />}>
+                    Continue With Apple
+                </Button>
 
+                <p>New to Coursera? <a href="#" onClick={(e)=>handleOpenCloseModals(e.target.innerText)}>Sign Up</a></p>
+                <a href="#">Log in with your Organization</a>
+                <p style={{marginTop: "30px", opacity: ".8"}}>Having trouble logging in? Learner help center
+                <br></br>
+                <br></br>
+
+This site is protected by reCAPTCHA Enterprise and the Google Privacy Policy and Terms of Service apply.</p>
+
+            </section>
+
+        </div>
+      );
 
 
     return(
@@ -210,13 +302,13 @@ This site is protected by reCAPTCHA Enterprise and the Google Privacy Policy and
             <Button variant="contained" color="primary" className="search-bar-btn">
                 <SearchIcon />
             </Button>
-            <Button color="dark" className="navbar-btn2">Enterprise</Button>
+            <Button color="dark" className="navbar-btn2" endIcon={<ArrowDownwardIcon />} onClick={handleClick}>Enterprise</Button>
             <ul className="nav-list">
                 <li>
                     <a href="#">Students</a>
                 </li>
                 <li>
-                    <a href="#">Login</a>
+                    <a href="#" onClick={handleOpen2}>Login</a>
                 </li>
             </ul>
             <Button variant="contained" color="primary" className="navbar-btn" endIcon={<ArrowDownwardIcon />} onClick={handleOpen}>
@@ -233,6 +325,38 @@ This site is protected by reCAPTCHA Enterprise and the Google Privacy Policy and
             >
                 {body}
             </Modal>
+
+            <Modal
+                open={open2}
+                onClose={handleClose2}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+            >
+                {body2}
+            </Modal>
+
+
+
+            <StyledMenu
+        id="customized-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleMenuClose}
+      >
+        <StyledMenuItem>
+          <ListItemText primary="Coursera for Business" />
+        </StyledMenuItem>
+        <StyledMenuItem>
+          <ListItemText primary="Coursera for Teams" />
+        </StyledMenuItem>
+        <StyledMenuItem>
+          <ListItemText primary="Coursera for Government" />
+        </StyledMenuItem>
+        <StyledMenuItem>
+          <ListItemText primary="Coursera for Campus" />
+        </StyledMenuItem>
+      </StyledMenu>
         </nav>
     )
 }
