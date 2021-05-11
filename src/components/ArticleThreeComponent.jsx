@@ -1,6 +1,7 @@
 import React from "react";
 import Outcomes from "../assets/outcomes.png";
 import {Button} from "@material-ui/core"
+import {LoginSignUp} from "./LoginSignUpComponent.jsx";
 
 function ArticleThree(){
     return(
@@ -10,9 +11,7 @@ function ArticleThree(){
                 <h2>Learner outcomes on Coursera</h2>
                 <p>87% of people learning for professional development report career benefits like getting a promotion, a raise, or starting a new career</p>
                 <span>- Coursera Learner Outcomes Survey (2019)</span>
-                <Button variant="contained" color="primary" className="navbar-btn" style={{alignSelf: "flex-start", marginTop: "20px"}}>
-                    <strong>Join for Free</strong>
-                </Button>
+                <LoginSignUp pos="signuparticle3"/>
                 <Button variant="contained" color="primary" className="navbar-btn" style={{alignSelf: "flex-start", marginTop: "20px"}}>
                     <strong>Try Coursera for Business</strong>
                 </Button>
