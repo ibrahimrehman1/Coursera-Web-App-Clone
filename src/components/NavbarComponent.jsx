@@ -87,51 +87,59 @@ function Navbar(){
 
 
 
-      
+      const [user_status, changeStatus] = useState(false);
+
+      function updateUserStatus(status){
+        changeStatus(status);
+      }
 
 
 
     
     return(
         <nav className="navbar">
-            <a href="#">
-                <img src={CourseraLogo} alt="Coursera Logo" className="coursera-logo"/>
-            </a>
+            <div style={{display: "flex", alignSelf: "flex-start"}}>
+              <a href="#">
+                  <img src={CourseraLogo} alt="Coursera Logo" className="coursera-logo"/>
+              </a>
 
 
-            <Button variant="contained" color="primary" className="navbar-btn" endIcon={<ArrowDownwardIcon />} onClick={toggleDrawer("left", true)}>
-                <strong>Explore</strong>
-            </Button>
+              <Button variant="contained" color="primary" className="navbar-btn" endIcon={<ArrowDownwardIcon />} onClick={toggleDrawer("left", true)} style={{marginLeft: "10px"}}>
+                  <strong>Explore</strong>
+              </Button>
 
-            <SwipeableDrawer
-                anchor="left"
-                open={state["left"]}
-                onClose={toggleDrawer("left", false)}
-                onOpen={toggleDrawer("left", true)}
-                >
-                {list("left")}
-            </SwipeableDrawer>
+              <SwipeableDrawer
+                  anchor="left"
+                  open={state["left"]}
+                  onClose={toggleDrawer("left", false)}
+                  onOpen={toggleDrawer("left", true)}
+                  >
+                  {list("left")}
+              </SwipeableDrawer>
 
-
-            <TextField id="outlined-basic" label="What do you want to learn?" variant="outlined" className="search-bar"/>
-            <Button variant="contained" color="primary" className="search-bar-btn">
-                <SearchIcon />
-            </Button>
+              <div  style={{marginLeft: "10px", display: "inline-flex"}}>
+                <TextField id="outlined-basic" label="What do you want to learn?" variant="outlined" className="search-bar"/>
+                <Button variant="contained" color="primary" className="search-bar-btn">
+                    <SearchIcon />
+                </Button>
+              </div>
+            </div>
+            
+            
             <NavbarStyledMenu />
 
+          {!user_status ? 
+          <React.Fragment>
             <ul className="nav-list">
                 <li>
                     <LoginSignUp pos="login"/>
                 </li>
-                <li>
-                </li>
             </ul>
-            
-          <LoginSignUp pos="signup"/>
-
-
-            
-
+            <LoginSignUp pos="signup" updateUserStatus={updateUserStatus}/> 
+          </React.Fragment>
+          : 
+            ""}
+          
         </nav>
     )
 }

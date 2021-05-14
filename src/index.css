@@ -22,8 +22,8 @@ code {
   right: 0px;
   left: 0px;
   background-color: white;
-  padding: 1.2em 0em;
   display: flex;
+  padding: .875em;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -51,15 +51,24 @@ code {
 
 .search-bar{
   align-self: center;
+  vertical-align: bottom !important;
+}
+
+.search-bar > label{
+  font-size: .875rem !important;
+}
+
+.search-bar > div > input{
+  padding: .875em !important;
 }
 
 
 .search-bar-btn{
   background-color: #0056D2 !important;
-  height: 55px;
-  align-self: center;
   z-index: 10;
-  left: -10px;
+  left: -5px;
+  height: 47px;
+  top: 7px;
   position: relative;
 }
 
