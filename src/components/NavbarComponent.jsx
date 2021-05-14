@@ -14,6 +14,8 @@ import {
     ListItemText, 
     Divider,
     ListSubheader,
+    Menu,
+    MenuItem
 } from "@material-ui/core";
 
 
@@ -88,10 +90,31 @@ function Navbar(){
 
 
       const [user_status, changeStatus] = useState(false);
+      const [username, setUsername] = useState("");
 
-      function updateUserStatus(status){
+      async function updateUserStatus(status, userID){
+        let data = await fetch("http://localhost:5000/username", {
+          method: "POST",
+          body: JSON.stringify({userID}),
+          headers: {"Content-Type": "application/json"}
+        });
+        let username = await data.json();
         changeStatus(status);
+        setUsername(username.fullname)
       }
+
+
+
+
+      const [anchorEl, setAnchorEl] = React.useState(null);
+
+      const handleUserClick = (event) => {
+        setAnchorEl(event.currentTarget);
+      };
+
+      const handleUserClose = () => {
+        setAnchorEl(null);
+      };
 
 
 
@@ -126,19 +149,43 @@ function Navbar(){
             </div>
             
             
-            <NavbarStyledMenu />
+            
 
           {!user_status ? 
           <React.Fragment>
+            <NavbarStyledMenu />
             <ul className="nav-list">
                 <li>
-                    <LoginSignUp pos="login"/>
+                    <LoginSignUp pos="login" updateUserStatus={updateUserStatus}/>
                 </li>
             </ul>
             <LoginSignUp pos="signup" updateUserStatus={updateUserStatus}/> 
           </React.Fragment>
           : 
-            ""}
+            <div style={{alignSelf: "center"}}>
+              <NavbarStyledMenu />
+              <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleUserClick}>
+                {username}
+              </Button>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleUserClose}
+              >
+                <MenuItem onClick={handleUserClose}>Profile</MenuItem>
+                <MenuItem onClick={handleUserClose}>My Purchases</MenuItem>
+                <MenuItem onClick={handleUserClose}>Settings</MenuItem>
+                <MenuItem onClick={handleUserClose}>Updates</MenuItem>
+                <MenuItem onClick={handleUserClose}>Accomplishments</MenuItem>
+                <MenuItem onClick={handleUserClose}>Help Center</MenuItem>
+                <MenuItem onClick={handleUserClose}>Logout</MenuItem>
+              </Menu>
+            </div>
+            
+            
+            }
           
         </nav>
     )

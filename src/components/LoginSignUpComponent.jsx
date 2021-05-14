@@ -48,9 +48,28 @@ export function LoginSignUp({pos, updateUserStatus}){
                 }
             })
 
-            let {userID, token} = await data.json();
+            const {userID, token} = await data.json();
             if (userID){
-                updateUserStatus(true);
+                updateUserStatus(true, userID);
+            }
+        }
+    }
+
+
+    const login = async () =>{
+        const [email, password] = [document.querySelector("#loginEmail").value, document.querySelector("#loginPassword").value];
+        if (email && password){
+            let data = await fetch("http://localhost:5000/login", {
+                method: "POST",
+                body: JSON.stringify({email, password}),
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            })
+
+            const {userID} = await data.json();
+            if (userID){
+                updateUserStatus(true, userID);
             }
         }
     }
@@ -158,11 +177,11 @@ This site is protected by reCAPTCHA Enterprise and the Google Privacy Policy and
         <section className="signup-form-section">
             <h2>Welcome Back</h2>
             
-            <TextField id="outlined-basic" label="name@gmail.com" variant="outlined" style={{marginTop: "25px", minWidth: "80%"}} />
+            <TextField id="loginEmail" label="name@gmail.com" variant="outlined" style={{marginTop: "25px", minWidth: "80%"}} required type="text"/>
             
-            <TextField id="outlined-basic" label="Create Password" variant="outlined" style={{marginTop: "25px", minWidth: "80%"}}/>
+            <TextField id="loginPassword" label="Enter Password" variant="outlined" style={{marginTop: "25px", minWidth: "80%"}} required type="password"/>
 
-            <Button variant="contained" color="primary" style={{width: "80%", backgroundColor: "#0056D2", fontWeight: "400", marginTop: '30px', padding: ".9em"}}>
+            <Button variant="contained" color="primary" style={{width: "80%", backgroundColor: "#0056D2", fontWeight: "400", marginTop: '30px', padding: ".9em"}} onClick={login}>
                 Login
             </Button>
 
