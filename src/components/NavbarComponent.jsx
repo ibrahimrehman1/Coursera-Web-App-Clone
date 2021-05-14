@@ -101,6 +101,8 @@ function Navbar(){
         let username = await data.json();
         changeStatus(status);
         setUsername(username.fullname)
+        window.location.assign("/home");
+        
       }
 
 
@@ -140,7 +142,7 @@ function Navbar(){
                   {list("left")}
               </SwipeableDrawer>
 
-              <div  style={{marginLeft: "10px", display: "inline-flex"}}>
+              <div style={{marginLeft: "10px", display: "inline-flex"}}>
                 <TextField id="outlined-basic" label="What do you want to learn?" variant="outlined" className="search-bar"/>
                 <Button variant="contained" color="primary" className="search-bar-btn">
                     <SearchIcon />
@@ -157,9 +159,10 @@ function Navbar(){
             <ul className="nav-list">
                 <li>
                     <LoginSignUp pos="login" updateUserStatus={updateUserStatus}/>
+
                 </li>
             </ul>
-            <LoginSignUp pos="signup" updateUserStatus={updateUserStatus}/> 
+            <LoginSignUp pos="signup" updateUserStatus={updateUserStatus}/>
           </React.Fragment>
           : 
             <div style={{alignSelf: "center"}}>
