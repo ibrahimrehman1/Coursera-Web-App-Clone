@@ -5,6 +5,7 @@ import {ArticleOne} from "./components/ArticleOneComponent.jsx";
 import {ArticleTwo} from "./components/ArticleTwoComponent.jsx";
 import {ArticleThree} from "./components/ArticleThreeComponent.jsx";
 import {ArticleFour} from "./components/ArticleFourComponent.jsx";
+import {ArticleFive} from "./components/ArticleFiveComponent.jsx";
 import {Route, Switch} from "react-router-dom";
 
 function FirstMainComponent(){
@@ -15,6 +16,7 @@ function FirstMainComponent(){
         <ArticleTwo />
         <ArticleThree />
         <ArticleFour />
+        <ArticleFive />
     </main>
   )
 }

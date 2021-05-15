@@ -40,7 +40,7 @@ function ArticleFour(){
                 </p>
             </section>
             <section id="coursera-community-section">
-                <h2>From the Coursera community</h2>
+                <h2 style={{textAlign: "center"}}>From the Coursera community</h2>
                 <p>77+ million people are already learning on Coursera
                 </p>
                 <Carousel>
