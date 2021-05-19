@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import clsx from "clsx";
 import CourseraLogo from "../assets/CourseraLogo.png";
 import {Button, TextField} from "@material-ui/core"
@@ -7,6 +7,8 @@ import {NavbarStyledMenu} from "./NavbarStyledMenuComponent.jsx";
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import {LoginSignUp} from "./LoginSignUpComponent.jsx";
 import {Link} from "react-router-dom";
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+
 
 import {
     SwipeableDrawer, 
@@ -30,7 +32,7 @@ const useStyles = makeStyles({
 });
 
 
-function Navbar(){
+function Navbar({status, username, history}){
 
     const classes = useStyles();
     const [state, setState] = useState({
@@ -101,8 +103,6 @@ function Navbar(){
         setAnchorEl(null);
       };
 
-
-
     
     return(
         <nav className="navbar">
@@ -135,22 +135,23 @@ function Navbar(){
             
             
             
-          {/* {!user_status ? 
+          {!status ? 
           <React.Fragment>
             <NavbarStyledMenu />
             <ul className="nav-list">
                 <li>
-                    <LoginSignUp pos="login"/>
+                    <LoginSignUp pos="login" history={history}/>
 
                 </li>
             </ul>
-            <LoginSignUp pos="signup"/>
+            <LoginSignUp pos="signup" history={history}/>
           </React.Fragment>
           : 
             <div style={{alignSelf: "center"}}>
               <NavbarStyledMenu />
-              <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleUserClick}>
-                Ibrahim
+              <div className="btnDivider"></div>
+              <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleUserClick} startIcon={<AccountCircleIcon style={{fontSize: "2.8rem", color: "#3BAFDA"}}/>}>
+                {username}
               </Button>
               <Menu
                 id="simple-menu"
@@ -168,21 +169,7 @@ function Navbar(){
                 <MenuItem onClick={handleUserClose}>Logout</MenuItem>
               </Menu>
             </div>
-            
-            
-            } */}
-            <React.Fragment>
-              <NavbarStyledMenu />
-              <ul className="nav-list">
-                  <li>
-                      <LoginSignUp pos="login"/>
-
-                  </li>
-              </ul>
-              <LoginSignUp pos="signup"/>
-          </React.Fragment>
-
-          
+            }    
         </nav>
     )
 }

@@ -2,17 +2,15 @@ import React from "react";
 import {Navbar} from "./components/NavbarComponent.jsx";
 import {Header} from "./components/HeaderComponent.jsx";
 import {ArticleOne} from "./components/ArticleOneComponent.jsx";
-import {Route, Switch, Link} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import {HomeComponent} from "./components/HomeComponent.jsx";
 
-function FirstMainComponent(){
+function FirstMainComponent({history}){
   return(
     <React.Fragment>
-      <Navbar/>
+      <Navbar status={false} username="" history={history}/>
       <main>
-        <Link to="/home">
-          <Header />
-        </Link>
+        <Header />
         <ArticleOne />
       </main>
     </React.Fragment>

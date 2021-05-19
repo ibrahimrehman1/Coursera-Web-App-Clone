@@ -53,7 +53,7 @@ export function NavbarStyledMenu(){
 
     return(
         <React.Fragment>
-            <Button color="dark" className="navbar-btn2" endIcon={<ArrowDownwardIcon />} onClick={handleClick}>Enterprise</Button>
+            <Button color="dark" className="navbar-btn2" onClick={handleClick}>Enterprise</Button>
             <StyledMenu
             id="customized-menu"
             anchorEl={anchorEl}

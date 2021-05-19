@@ -5,13 +5,6 @@ const updateID = (id) =>{
     }
 }
 
-const updateToken = (token) =>{
-    return {
-        type: "USER_TOKEN",
-        payload: token
-    }
-}
-
 const updateUsername = (username) =>{
     return{
         type: "USER_NAME",
@@ -19,4 +12,4 @@ const updateUsername = (username) =>{
     }
 }
 
-export {updateID, updateToken, updateUsername};
+export {updateID, updateUsername};

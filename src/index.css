@@ -305,3 +305,11 @@ a{
 .article5 > section > p{
   font-size: 1.2rem;
 }
+
+.btnDivider{
+  height: 40px;
+  vertical-align: middle;
+  width: 2px;
+  background-color: rgb(187, 187, 187);
+  display: inline-block;
+}

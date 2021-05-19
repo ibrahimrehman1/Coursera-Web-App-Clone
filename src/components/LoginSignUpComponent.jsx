@@ -6,8 +6,9 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import Modal from '@material-ui/core/Modal';
 import {makeStyles, TextField, Button} from "@material-ui/core";
 import {useDispatch} from "react-redux";
-import {updateID, updateToken, updateUsername} from "../redux/actions";
+import {updateID, updateUsername} from "../redux/actions";
 import {Link} from "react-router-dom";
+import {GoogleLogin} from "react-google-login";
 
 
 const useStyles2 = makeStyles((theme) => ({
@@ -24,7 +25,7 @@ const useStyles2 = makeStyles((theme) => ({
     },
 }));
 
-export function LoginSignUp({pos}){
+export function LoginSignUp({pos, history}){
     const classes2 = useStyles2();
     const [open, setOpen] = useState(false);
 
@@ -54,7 +55,7 @@ export function LoginSignUp({pos}){
 
                 let userData = await data.json();
                 dispatch(updateID(userData.userID))
-                dispatch(updateToken(userData.token))
+                dispatch(updateUsername(userData.username))
                 localStorage.setItem("token", userData.token);
                 console.log(userData);
 
@@ -68,13 +69,22 @@ export function LoginSignUp({pos}){
     const login = async () =>{
         const [email, password] = [document.querySelector("#loginEmail").value, document.querySelector("#loginPassword").value];
         if (email && password){
-            let data = await fetch("http://localhost:5000/login", {
-                method: "POST",
-                body: JSON.stringify({email, password}),
-                headers: {
-                    "Content-Type": "application/json",
-                }
-            })
+            try{
+                let data = await fetch("http://localhost:5000/login", {
+                    method: "POST",
+                    body: JSON.stringify({email, password}),
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                })
+                let userData = await data.json();
+                dispatch(updateID(userData.userID))
+                dispatch(updateUsername(userData.username))
+                localStorage.setItem("token", userData.token);
+                console.log(userData);
+            }catch(err){
+                console.log(err.message)
+            }
         }
     }
 
@@ -120,6 +130,18 @@ export function LoginSignUp({pos}){
         
     }
 
+    const googleSuccess = async (res)=>{
+        console.log(res);
+        const username = res.profileObj.name;
+        dispatch(updateUsername(username));
+        history.push("/home");
+        
+    }
+
+    const googleFailure = (err)=>{
+        console.log(err);
+    }
+
     const body = (
         <div className={classes2.paper}>
             <section className="signup-form-section">
@@ -132,7 +154,7 @@ export function LoginSignUp({pos}){
                 <TextField id="password" label="Create Password" variant="outlined" style={{marginTop: "25px", minWidth: "80%"}} type="password" value={password} onChange={(e)=>changePassword(e.target.value)} required/>
                 <span id="span3"></span>
                 
-                <Link to="/home" onClick={signup}>
+                <Link to="/home" onClick={signup} style={{minWidth: "100%"}}>
                     <Button variant="contained" color="primary" style={{width: "80%", backgroundColor: "#0056D2", fontWeight: "400", marginTop: '30px', padding: ".9em"}}>
                         Join for Free
                     </Button>
@@ -140,9 +162,20 @@ export function LoginSignUp({pos}){
 
                 <p>-or-</p>
 
-                <Button variant="outlined" style={{width: "80%", fontWeight: "400", marginTop: '10px', padding: ".9em"}} startIcon={<GTranslateIcon />}>
-                    Continue With Google
-                </Button>
+                <GoogleLogin 
+                    clientId="746490706685-f6665foqhvjjoor7k27snfoj1qq36nb1.apps.googleusercontent.com"
+                    render={(renderProps)=>{
+                        return(
+                        <Button variant="outlined" style={{width: "80%", fontWeight: "400", marginTop: '10px', padding: ".9em"}} startIcon={<GTranslateIcon />} onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                            Continue With Google
+                        </Button>
+                        )
+                    }}
+                    onSuccess={googleSuccess}
+                    onFailure={googleFailure}
+                    cookiePolicy='single_host_origin'
+                />
+                
 
                 <Button variant="outlined" style={{width: "80%", fontWeight: "400", marginTop: '10px', padding: ".9em"}} startIcon={<FacebookIcon />}>
                     Continue With Facebook
@@ -184,10 +217,12 @@ This site is protected by reCAPTCHA Enterprise and the Google Privacy Policy and
             <TextField id="loginEmail" label="name@gmail.com" variant="outlined" style={{marginTop: "25px", minWidth: "80%"}} required type="text"/>
             
             <TextField id="loginPassword" label="Enter Password" variant="outlined" style={{marginTop: "25px", minWidth: "80%"}} required type="password"/>
-
-            <Button variant="contained" color="primary" style={{width: "80%", backgroundColor: "#0056D2", fontWeight: "400", marginTop: '30px', padding: ".9em"}} onClick={login}>
-                Login
-            </Button>
+            
+            <Link to="/home" onClick={login} style={{minWidth: "100%"}}>
+                <Button variant="contained" color="primary" style={{width: "80%", backgroundColor: "#0056D2", fontWeight: "400", marginTop: '30px', padding: ".9em"}}>
+                    Login
+                </Button>
+            </Link>
 
             <p>-or-</p>
 
