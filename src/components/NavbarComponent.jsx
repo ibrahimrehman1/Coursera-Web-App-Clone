@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import clsx from "clsx";
 import CourseraLogo from "../assets/CourseraLogo.png";
 import {Button, TextField} from "@material-ui/core"
@@ -6,6 +6,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import {NavbarStyledMenu} from "./NavbarStyledMenuComponent.jsx";
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import {LoginSignUp} from "./LoginSignUpComponent.jsx";
+import {Link} from "react-router-dom";
 
 import {
     SwipeableDrawer, 
@@ -30,7 +31,7 @@ const useStyles = makeStyles({
 
 
 function Navbar(){
-  
+
     const classes = useStyles();
     const [state, setState] = useState({
         top: false,
@@ -86,25 +87,7 @@ function Navbar(){
         </div>
       );
 
-
-
-
-      const [user_status, changeStatus] = useState(false);
-      const [username, setUsername] = useState("");
-
-      async function updateUserStatus(status, userID){
-        let data = await fetch("http://localhost:5000/username", {
-          method: "POST",
-          body: JSON.stringify({userID}),
-          headers: {"Content-Type": "application/json"}
-        });
-        let username = await data.json();
-        changeStatus(status);
-        setUsername(username.fullname)
-        window.location.assign("/home");
-        
-      }
-
+      
 
 
 
@@ -124,9 +107,9 @@ function Navbar(){
     return(
         <nav className="navbar">
             <div style={{display: "flex", alignSelf: "flex-start"}}>
-              <a href="#">
+              <Link to="/">
                   <img src={CourseraLogo} alt="Coursera Logo" className="coursera-logo"/>
-              </a>
+              </Link>
 
 
               <Button variant="contained" color="primary" className="navbar-btn" endIcon={<ArrowDownwardIcon />} onClick={toggleDrawer("left", true)} style={{marginLeft: "10px"}}>
@@ -152,23 +135,22 @@ function Navbar(){
             
             
             
-
-          {!user_status ? 
+          {/* {!user_status ? 
           <React.Fragment>
             <NavbarStyledMenu />
             <ul className="nav-list">
                 <li>
-                    <LoginSignUp pos="login" updateUserStatus={updateUserStatus}/>
+                    <LoginSignUp pos="login"/>
 
                 </li>
             </ul>
-            <LoginSignUp pos="signup" updateUserStatus={updateUserStatus}/>
+            <LoginSignUp pos="signup"/>
           </React.Fragment>
           : 
             <div style={{alignSelf: "center"}}>
               <NavbarStyledMenu />
               <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleUserClick}>
-                {username}
+                Ibrahim
               </Button>
               <Menu
                 id="simple-menu"
@@ -188,7 +170,18 @@ function Navbar(){
             </div>
             
             
-            }
+            } */}
+            <React.Fragment>
+              <NavbarStyledMenu />
+              <ul className="nav-list">
+                  <li>
+                      <LoginSignUp pos="login"/>
+
+                  </li>
+              </ul>
+              <LoginSignUp pos="signup"/>
+          </React.Fragment>
+
           
         </nav>
     )

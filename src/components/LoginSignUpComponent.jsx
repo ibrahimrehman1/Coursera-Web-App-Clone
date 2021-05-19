@@ -5,6 +5,9 @@ import AppleIcon from '@material-ui/icons/Apple';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import Modal from '@material-ui/core/Modal';
 import {makeStyles, TextField, Button} from "@material-ui/core";
+import {useDispatch} from "react-redux";
+import {updateID, updateToken, updateUsername} from "../redux/actions";
+import {Link} from "react-router-dom";
 
 
 const useStyles2 = makeStyles((theme) => ({
@@ -21,7 +24,7 @@ const useStyles2 = makeStyles((theme) => ({
     },
 }));
 
-export function LoginSignUp({pos, updateUserStatus}){
+export function LoginSignUp({pos}){
     const classes2 = useStyles2();
     const [open, setOpen] = useState(false);
 
@@ -35,22 +38,28 @@ export function LoginSignUp({pos, updateUserStatus}){
     setOpen(false);
     };
 
-
+    const dispatch = useDispatch();
 
     const signup = async () =>{
         const [fullname, email, password] = [document.querySelector("#fullName").value, document.querySelector("#email").value, document.querySelector("#password").value];
         if (fullname && email && password){
-            let data = await fetch("http://localhost:5000/signup", {
-                method: "POST",
-                body: JSON.stringify({fullname, email, password}),
-                headers: {
-                    "Content-Type": "application/json",
-                }
-            })
+            try{
+                let data = await fetch("http://localhost:5000/signup", {
+                    method: "POST",
+                    body: JSON.stringify({fullname, email, password}),
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                })
 
-            const {userID, token} = await data.json();
-            if (userID){
-                updateUserStatus(true, userID);
+                let userData = await data.json();
+                dispatch(updateID(userData.userID))
+                dispatch(updateToken(userData.token))
+                localStorage.setItem("token", userData.token);
+                console.log(userData);
+
+            }catch(err){
+                console.log(err.message)
             }
         }
     }
@@ -66,14 +75,8 @@ export function LoginSignUp({pos, updateUserStatus}){
                     "Content-Type": "application/json",
                 }
             })
-
-            const {userID} = await data.json();
-            if (userID){
-                updateUserStatus(true, userID);
-            }
         }
     }
-
 
 
     const [fullname, updateFullName] = useState("");
@@ -122,7 +125,6 @@ export function LoginSignUp({pos, updateUserStatus}){
             <section className="signup-form-section">
                 <h2>Signup</h2>
                 <p>Learn on your own time from top universities and businesses.</p>
-                
                 <TextField id="fullName" label="Enter Your Full Name" variant="outlined" style={{marginTop: "20px", minWidth: "80%"}} value={fullname} onChange={(e)=>changeFullName(e.target.value)} spellCheck="false" required/>
                 <span id="span1" style={{color: "red"}}></span>
                 <TextField id="email" label="name@gmail.com" variant="outlined" style={{marginTop: "25px", minWidth: "80%"}} value={email} onChange={(e)=>changeEmail(e.target.value)} required/>
@@ -130,9 +132,11 @@ export function LoginSignUp({pos, updateUserStatus}){
                 <TextField id="password" label="Create Password" variant="outlined" style={{marginTop: "25px", minWidth: "80%"}} type="password" value={password} onChange={(e)=>changePassword(e.target.value)} required/>
                 <span id="span3"></span>
                 
-                <Button variant="contained" color="primary" style={{width: "80%", backgroundColor: "#0056D2", fontWeight: "400", marginTop: '30px', padding: ".9em"}} onClick={signup}>
-                    Join for Free
-                </Button>
+                <Link to="/home" onClick={signup}>
+                    <Button variant="contained" color="primary" style={{width: "80%", backgroundColor: "#0056D2", fontWeight: "400", marginTop: '30px', padding: ".9em"}}>
+                        Join for Free
+                    </Button>
+                </Link>
 
                 <p>-or-</p>
 
