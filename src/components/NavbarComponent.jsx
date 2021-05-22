@@ -100,6 +100,8 @@ function Navbar({status, username, history}){
       };
 
       const handleUserClose = () => {
+        localStorage.clear();
+        window.location.assign("/");
         setAnchorEl(null);
       };
 
@@ -166,7 +168,7 @@ function Navbar({status, username, history}){
                 <MenuItem onClick={handleUserClose}>Updates</MenuItem>
                 <MenuItem onClick={handleUserClose}>Accomplishments</MenuItem>
                 <MenuItem onClick={handleUserClose}>Help Center</MenuItem>
-                <MenuItem onClick={handleUserClose}>Logout</MenuItem>
+                <MenuItem onClick={()=>handleUserClose("logout")}>Logout</MenuItem>
               </Menu>
             </div>
             }    

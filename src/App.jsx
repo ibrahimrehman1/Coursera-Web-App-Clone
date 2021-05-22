@@ -6,6 +6,9 @@ import {Route, Switch} from "react-router-dom";
 import {HomeComponent} from "./components/HomeComponent.jsx";
 
 function FirstMainComponent({history}){
+  if (localStorage.length){
+    history.push("/home");
+  }
   return(
     <React.Fragment>
       <Navbar status={false} username="" history={history}/>

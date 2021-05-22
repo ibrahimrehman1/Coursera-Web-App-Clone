@@ -54,10 +54,10 @@ export function LoginSignUp({pos, history}){
                 })
 
                 let userData = await data.json();
+                console.log(userData);
                 dispatch(updateID(userData.userID))
                 dispatch(updateUsername(userData.username))
                 localStorage.setItem("token", userData.token);
-                console.log(userData);
 
             }catch(err){
                 console.log(err.message)
@@ -134,6 +134,8 @@ export function LoginSignUp({pos, history}){
         console.log(res);
         const username = res.profileObj.name;
         dispatch(updateUsername(username));
+        localStorage.setItem("access_token", res.tokenObj.access_token)
+        localStorage.setItem("username", res.At.Ve)
         history.push("/home");
         
     }

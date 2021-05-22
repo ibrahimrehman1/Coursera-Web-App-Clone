@@ -5,41 +5,48 @@ import {Navbar} from "./NavbarComponent.jsx";
 
 
 function HomeComponent(){
-    let dispatch = useDispatch();
-    let token = localStorage.getItem("token")
-    let username = useSelector((state)=>{
-      return state.User.username
-    })
-    console.log("Selector Username", username)
-    React.useEffect(()=>{
-      if (!username){
-        console.log(username)
-        async function fetchData(){
-          let jsonData = await fetch("http://localhost:5000/username", {
-              method: "POST",
-              headers: {"Content-Type": "application/json"},
-              body: JSON.stringify({token})
-          })
-          let data = await jsonData.json();
-          console.log(data);
-          dispatch(updateUsername(data.username))
-        }
-        fetchData();
-      }
-    }, [])
+  let username;
+  let token;
+  let dispatch = useDispatch();
+  if (localStorage.length > 1){
+    username = localStorage.getItem("username");
+  }else{
+    token = localStorage.getItem("token");
+  }
+  username = (useSelector((state)=>{
+    return state.User.username
+  })) || username
 
-    username = useSelector((state)=>{
-      return state.User.username
-    })
-
-    return(
-      <React.Fragment>
+  console.log(username);  
   
-        {localStorage.length ? <><Navbar status={true} username={username}/>
-        <h1 style={{marginTop: "100px"}}></h1> </>: window.location.assign("/")}
-        
-      </React.Fragment>
-    )
+  React.useEffect(()=>{
+    if (!username){
+      async function fetchData(){
+        let jsonData = await fetch("http://localhost:5000/username", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({token})
+        })
+        let data = await jsonData.json();
+        console.log(data);
+        dispatch(updateUsername(data.username))
+      }
+      fetchData();
+    }
+  }, [])
+
+  username = (useSelector((state)=>{
+    return state.User.username
+  })) || username
+
+  return(
+    <React.Fragment>
+
+      {localStorage.length ? <><Navbar status={true} username={username}/>
+      <h1 style={{marginTop: "100px"}}></h1> </>: window.location.assign("/")}
+      
+    </React.Fragment>
+  )
 }
 
 export {HomeComponent};
