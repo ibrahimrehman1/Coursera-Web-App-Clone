@@ -54,10 +54,11 @@ export function LoginSignUp({pos, history}){
                 })
 
                 let userData = await data.json();
+                localStorage.setItem("token", userData.token);
                 console.log(userData);
                 dispatch(updateID(userData.userID))
                 dispatch(updateUsername(userData.username))
-                localStorage.setItem("token", userData.token);
+                
 
             }catch(err){
                 console.log(err.message)
