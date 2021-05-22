@@ -9,6 +9,7 @@ import {useDispatch} from "react-redux";
 import {updateID, updateUsername} from "../redux/actions";
 import {Link} from "react-router-dom";
 import {GoogleLogin} from "react-google-login";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 
 
 const useStyles2 = makeStyles((theme) => ({
@@ -145,6 +146,20 @@ export function LoginSignUp({pos, history}){
         console.log(err);
     }
 
+
+    const responseFacebook = (res) =>{
+        console.log(res);
+        const username = res.name;
+        dispatch(updateUsername(username));
+        localStorage.setItem("access_token", res.accessToken)
+        localStorage.setItem("username", username)
+        history.push("/home");
+    }
+
+    const componentClicked = (data) =>{
+        console.log(data);
+    }
+
     const body = (
         <div className={classes2.paper}>
             <section className="signup-form-section">
@@ -179,10 +194,20 @@ export function LoginSignUp({pos, history}){
                     cookiePolicy='single_host_origin'
                 />
                 
-
-                <Button variant="outlined" style={{width: "80%", fontWeight: "400", marginTop: '10px', padding: ".9em"}} startIcon={<FacebookIcon />}>
-                    Continue With Facebook
-                </Button>
+                <FacebookLogin 
+                appId="2701761796782192"
+                autoLoad={false} 
+                fields="name, email, picture" 
+                callback={responseFacebook}
+                onClick={componentClicked}
+                render={renderProps=>(
+                    <Button variant="outlined" style={{width: "80%", fontWeight: "400", marginTop: '10px', padding: ".9em"}} startIcon={<FacebookIcon />} onClick={renderProps.onClick}>
+                        Continue With Facebook
+                    </Button>
+                )}/>
+                
+                
+                
 
                 <p>Already on Coursera? <a href="#" onClick={(e)=>handleOpenCloseModals(e.target.innerText)}>Log In</a></p>
                 <a href="#">Sign Up with your Organization</a>
@@ -229,13 +254,31 @@ This site is protected by reCAPTCHA Enterprise and the Google Privacy Policy and
 
             <p>-or-</p>
 
-            <Button variant="outlined" style={{width: "80%", fontWeight: "400", marginTop: '10px', padding: ".9em"}} startIcon={<GTranslateIcon />}>
-                Continue With Google
-            </Button>
+            <GoogleLogin 
+                    clientId="746490706685-f6665foqhvjjoor7k27snfoj1qq36nb1.apps.googleusercontent.com"
+                    render={(renderProps)=>{
+                        return(
+                        <Button variant="outlined" style={{width: "80%", fontWeight: "400", marginTop: '10px', padding: ".9em"}} startIcon={<GTranslateIcon />} onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                            Continue With Google
+                        </Button>
+                        )
+                    }}
+                    onSuccess={googleSuccess}
+                    onFailure={googleFailure}
+                    cookiePolicy='single_host_origin'
+            />
 
-            <Button variant="outlined" style={{width: "80%", fontWeight: "400", marginTop: '10px', padding: ".9em"}} startIcon={<FacebookIcon />}>
-                Continue With Facebook
-            </Button>
+            <FacebookLogin 
+                appId="2701761796782192"
+                autoLoad={false} 
+                fields="name, email, picture" 
+                callback={responseFacebook}
+                onClick={componentClicked}
+                render={renderProps=>(
+                    <Button variant="outlined" style={{width: "80%", fontWeight: "400", marginTop: '10px', padding: ".9em"}} startIcon={<FacebookIcon />} onClick={renderProps.onClick}>
+                        Continue With Facebook
+                    </Button>
+            )}/>
 
             <Button variant="outlined" style={{width: "80%", fontWeight: "400", marginTop: '10px', padding: ".9em"}} startIcon={<AppleIcon />}>
                 Continue With Apple

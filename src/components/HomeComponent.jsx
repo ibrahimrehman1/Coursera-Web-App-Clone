@@ -2,11 +2,9 @@ import {useSelector, useDispatch} from "react-redux";
 import {updateUsername} from "../redux/actions";
 import React from "react";
 import {Navbar} from "./NavbarComponent.jsx";
-import {useHistory} from "react-router-dom";
 
 
 function HomeComponent(){
-  let history = useHistory();
   let username;
   let token;
   let dispatch = useDispatch();
