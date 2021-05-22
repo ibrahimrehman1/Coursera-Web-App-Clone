@@ -14,7 +14,7 @@ function FirstMainComponent({history}){
       <Navbar status={false} username="" history={history}/>
       <main>
         <Header />
-        <ArticleOne />
+        <ArticleOne history={history}/>
       </main>
     </React.Fragment>
   )

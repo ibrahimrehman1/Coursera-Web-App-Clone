@@ -1,6 +1,7 @@
 const initialState = {
     userID: "",
-    username: ""
+    username: "",
+    imageURI: ""
 }
 
 export const UserDataReducer = (state = initialState, action) =>{
@@ -11,6 +12,10 @@ export const UserDataReducer = (state = initialState, action) =>{
 
         case "USER_NAME":
             return {...state, username: action.payload}
+            break;
+
+        case "IMAGE_URI":
+            return {...state, imageURI: action.payload}
             break;
 
         default:

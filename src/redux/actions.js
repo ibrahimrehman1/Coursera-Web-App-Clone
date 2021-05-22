@@ -12,4 +12,13 @@ const updateUsername = (username) =>{
     }
 }
 
-export {updateID, updateUsername};
+const updateImageURI = (imageURI) =>{
+    return{
+        type: "IMAGE_URI",
+        payload: imageURI
+    }
+}
+
+
+
+export {updateID, updateUsername, updateImageURI};

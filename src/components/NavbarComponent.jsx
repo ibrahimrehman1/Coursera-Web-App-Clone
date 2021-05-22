@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 });
 
 
-function Navbar({status, username, history}){
+function Navbar({status, username, history, imageURI}){
 
     const classes = useStyles();
     const [state, setState] = useState({
@@ -99,11 +99,17 @@ function Navbar({status, username, history}){
         setAnchorEl(event.currentTarget);
       };
 
-      const handleUserClose = () => {
+      const handleUserLogout = () => {
         localStorage.clear();
         window.location.assign("/");
         setAnchorEl(null);
       };
+
+      const handleUserClose = () => {
+        setAnchorEl(null);
+      };
+
+
 
     
     return(
@@ -152,7 +158,8 @@ function Navbar({status, username, history}){
             <div style={{alignSelf: "center"}}>
               <NavbarStyledMenu />
               <div className="btnDivider"></div>
-              <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleUserClick} startIcon={<AccountCircleIcon style={{fontSize: "2.8rem", color: "#3BAFDA"}}/>}>
+
+              <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleUserClick} startIcon={imageURI ? <img src={imageURI} style={{borderRadius: "50%", width: "50px"}}/>:<AccountCircleIcon style={{fontSize: "2.8rem", color: "#3BAFDA"}}/>}>
                 {username}
               </Button>
               <Menu
@@ -162,13 +169,13 @@ function Navbar({status, username, history}){
                 open={Boolean(anchorEl)}
                 onClose={handleUserClose}
               >
-                <MenuItem onClick={handleUserClose}>Profile</MenuItem>
-                <MenuItem onClick={handleUserClose}>My Purchases</MenuItem>
-                <MenuItem onClick={handleUserClose}>Settings</MenuItem>
-                <MenuItem onClick={handleUserClose}>Updates</MenuItem>
-                <MenuItem onClick={handleUserClose}>Accomplishments</MenuItem>
-                <MenuItem onClick={handleUserClose}>Help Center</MenuItem>
-                <MenuItem onClick={()=>handleUserClose("logout")}>Logout</MenuItem>
+                <MenuItem>Profile</MenuItem>
+                <MenuItem>My Purchases</MenuItem>
+                <MenuItem>Settings</MenuItem>
+                <MenuItem>Updates</MenuItem>
+                <MenuItem>Accomplishments</MenuItem>
+                <MenuItem>Help Center</MenuItem>
+                <MenuItem onClick={()=>handleUserLogout("logout")}>Logout</MenuItem>
               </Menu>
             </div>
             }    

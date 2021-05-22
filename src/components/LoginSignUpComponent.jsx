@@ -6,7 +6,7 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import Modal from '@material-ui/core/Modal';
 import {makeStyles, TextField, Button} from "@material-ui/core";
 import {useDispatch} from "react-redux";
-import {updateID, updateUsername} from "../redux/actions";
+import {updateID, updateUsername, updateImageURI} from "../redux/actions";
 import {Link} from "react-router-dom";
 import {GoogleLogin} from "react-google-login";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
@@ -95,7 +95,6 @@ export function LoginSignUp({pos, history}){
     const [email, updateEmail] = useState("");
     const [password, updatePassword] = useState("");
     
-    let emailSpan = document.querySelector("#span2");
 
     function changeFullName(val){
         let nameSpan = document.querySelector("#span1");
@@ -135,7 +134,9 @@ export function LoginSignUp({pos, history}){
     const googleSuccess = async (res)=>{
         console.log(res);
         const username = res.profileObj.name;
+        const imageUrl = res.profileObj.imageUrl;
         dispatch(updateUsername(username));
+        dispatch(updateImageURI(imageUrl));
         localStorage.setItem("access_token", res.tokenObj.access_token)
         localStorage.setItem("username", res.At.Ve)
         history.push("/home");

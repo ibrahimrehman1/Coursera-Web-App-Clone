@@ -39,11 +39,17 @@ function HomeComponent(){
     return state.User.username
   })) || username
 
+  let imageURI = useSelector(state=>{
+    return(
+      state.User.imageURI
+    )
+  })
+
   return(
     <React.Fragment>
 
-      {localStorage.length ? <><Navbar status={true} username={username}/>
-      <h1 style={{marginTop: "100px"}}></h1> </>: setTimeout(()=>window.location.assign("/"), 5000)}
+      {localStorage.length ? <><Navbar status={true} username={username} imageURI={imageURI}/>
+      </>: setTimeout(()=>window.location.assign("/"), 5000)}
       
     </React.Fragment>
   )
