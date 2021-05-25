@@ -139,6 +139,7 @@ export function LoginSignUp({pos, history}){
         dispatch(updateImageURI(imageUrl));
         localStorage.setItem("access_token", res.tokenObj.access_token)
         localStorage.setItem("username", res.At.Ve)
+        localStorage.setItem("imageURI", imageUrl)
         history.push("/home");
         
     }

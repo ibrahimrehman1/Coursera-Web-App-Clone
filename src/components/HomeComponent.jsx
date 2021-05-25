@@ -43,7 +43,7 @@ function HomeComponent(){
     return(
       state.User.imageURI
     )
-  })
+  }) || localStorage.getItem("imageURI");
 
   return(
     <React.Fragment>

@@ -24,7 +24,7 @@ import {
 
 const useStyles = makeStyles({
     list: {
-      width: 300,
+      width: 350,
     },
     fullList: {
       width: 'auto',
@@ -57,7 +57,6 @@ function Navbar({status, username, history, imageURI}){
             [classes.fullList]: anchor === 'top' || anchor === 'bottom',
           })}
           role="presentation"
-          onClick={toggleDrawer(anchor, false)}
           onKeyDown={toggleDrawer(anchor, false)}
         >
           <List>
@@ -65,20 +64,22 @@ function Navbar({status, username, history, imageURI}){
                   <strong>Goals</strong>
                 </ListSubheader>
             {['Take a Free Course', 'Earn a Degree', 'Earn a Certificate', 'Launch or advance your Career'].map((text, index) => (
-              <ListItem button key={text}>
+              <ListItem button key={index}>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
           </List>
           <Divider />
           <List>
-                <ListSubheader  style={{color: "black", fontSize: "1.2rem"}} disableSticky="true">
+                <ListSubheader style={{color: "black", fontSize: "1.2rem"}} disableSticky="true">
                     <strong>Subjects</strong>
                 </ListSubheader>
             {['Data Science', 'Business', 'Computer Science', 'Information Technology', 'Language Learning', 'Health', 'Personal Development', 'Physical Science and Engineering', 'Social Sciences', 'Arts and Humanities', 'Math and Logic'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemText primary={text} />
-              </ListItem>
+              <>
+                <ListItem key={index}>
+                  <NavbarStyledMenu text={text} styleProps={{width: "100%"}}/>
+                </ListItem>
+              </>
             ))}
                 <ListItem style={{marginTop: "20px"}}>
                     <Button variant="contained" color="primary" className="navbar-btn">
@@ -145,7 +146,7 @@ function Navbar({status, username, history, imageURI}){
             
           {!status ? 
           <React.Fragment>
-            <NavbarStyledMenu />
+            <NavbarStyledMenu text="Enterprise"/>
             <ul className="nav-list">
                 <li>
                     <LoginSignUp pos="login" history={history}/>
@@ -156,7 +157,7 @@ function Navbar({status, username, history, imageURI}){
           </React.Fragment>
           : 
             <div style={{alignSelf: "center"}}>
-              <NavbarStyledMenu />
+              <NavbarStyledMenu text="Enterprise"/>
               <div className="btnDivider"></div>
 
               <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleUserClick} startIcon={imageURI ? <img src={imageURI} style={{borderRadius: "50%", width: "50px"}}/>:<AccountCircleIcon style={{fontSize: "2.8rem", color: "#3BAFDA"}}/>}>
@@ -169,7 +170,9 @@ function Navbar({status, username, history, imageURI}){
                 open={Boolean(anchorEl)}
                 onClose={handleUserClose}
               >
-                <MenuItem>Profile</MenuItem>
+                <MenuItem>
+                  <Link to="/profile" style={{color: "inherit"}}>Profile</Link>
+                </MenuItem>
                 <MenuItem>My Purchases</MenuItem>
                 <MenuItem>Settings</MenuItem>
                 <MenuItem>Updates</MenuItem>

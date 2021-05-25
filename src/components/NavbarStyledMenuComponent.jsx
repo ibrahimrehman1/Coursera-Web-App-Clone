@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {ListItemText, MenuItem, Menu, Button} from "@material-ui/core";
 import { withStyles } from '@material-ui/core/styles';
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
 
 
@@ -39,7 +38,7 @@ const StyledMenu = withStyles({
 
 
 
-export function NavbarStyledMenu(){
+export function NavbarStyledMenu({text, styleProps}){
     const [anchorEl, setAnchorEl] = useState(null);
 
     const handleClick = (event) => {
@@ -53,7 +52,7 @@ export function NavbarStyledMenu(){
 
     return(
         <React.Fragment>
-            <Button color="dark" className="navbar-btn2" onClick={handleClick}>Enterprise</Button>
+            <Button color="dark" className="navbar-btn2" onClick={handleClick} style={styleProps}>{text}</Button>
             <StyledMenu
             id="customized-menu"
             anchorEl={anchorEl}
