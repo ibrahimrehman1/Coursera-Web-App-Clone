@@ -38,7 +38,7 @@ const StyledMenu = withStyles({
 
 
 
-export function NavbarStyledMenu({text, styleProps}){
+export function NavbarStyledMenu({subject, styleProps}){
     const [anchorEl, setAnchorEl] = useState(null);
 
     const handleClick = (event) => {
@@ -49,30 +49,33 @@ export function NavbarStyledMenu({text, styleProps}){
         setAnchorEl(null);
     };
 
+    
+    const {subject: subjectName, topics: subjectTopics} = subject;
+
+
 
     return(
         <React.Fragment>
-            <Button color="dark" className="navbar-btn2" onClick={handleClick} style={styleProps}>{text}</Button>
-            <StyledMenu
-            id="customized-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleMenuClose}
-            >
-                <StyledMenuItem>
-                <ListItemText primary="Coursera for Business" />
-                </StyledMenuItem>
-                <StyledMenuItem>
-                <ListItemText primary="Coursera for Teams" />
-                </StyledMenuItem>
-                <StyledMenuItem>
-                <ListItemText primary="Coursera for Government" />
-                </StyledMenuItem>
-                <StyledMenuItem>
-                <ListItemText primary="Coursera for Campus" />
-                </StyledMenuItem>
-            </StyledMenu>
+            <Button color="dark" className="navbar-btn2" onClick={handleClick} style={styleProps}>{subjectName}</Button>
+            {
+              subjectTopics.length ? 
+                <StyledMenu
+                  id="customized-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleMenuClose}
+                >
+
+                  {subjectTopics.map((topic, index)=>{
+                    return(
+                      <StyledMenuItem key={index}>
+                        <ListItemText primary={topic} />
+                      </StyledMenuItem>
+                    )
+                  })}
+                </StyledMenu> : ""
+            }
         </React.Fragment>
         
     )

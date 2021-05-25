@@ -1,4 +1,4 @@
 import {createStore, combineReducers} from "redux";
-import {UserDataReducer} from "./reducer";
+import {UserDataReducer, SubjectDataReducer} from "./reducer";
 
-export const store = createStore(combineReducers({User: UserDataReducer}));
+export const store = createStore(combineReducers({User: UserDataReducer, Subject: SubjectDataReducer}));

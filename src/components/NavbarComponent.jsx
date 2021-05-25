@@ -8,6 +8,7 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import {LoginSignUp} from "./LoginSignUpComponent.jsx";
 import {Link} from "react-router-dom";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import {useSelector} from "react-redux";
 
 
 import {
@@ -33,6 +34,9 @@ const useStyles = makeStyles({
 
 
 function Navbar({status, username, history, imageURI}){
+    let subjects = useSelector((state)=>{
+      return state.Subject.subjects;
+    })
 
     const classes = useStyles();
     const [state, setState] = useState({
@@ -74,10 +78,10 @@ function Navbar({status, username, history, imageURI}){
                 <ListSubheader style={{color: "black", fontSize: "1.2rem"}} disableSticky="true">
                     <strong>Subjects</strong>
                 </ListSubheader>
-            {['Data Science', 'Business', 'Computer Science', 'Information Technology', 'Language Learning', 'Health', 'Personal Development', 'Physical Science and Engineering', 'Social Sciences', 'Arts and Humanities', 'Math and Logic'].map((text, index) => (
+            {subjects.map((subject, index) => (
               <>
                 <ListItem key={index}>
-                  <NavbarStyledMenu text={text} styleProps={{width: "100%"}}/>
+                  <NavbarStyledMenu subject={subject} styleProps={{width: "100%"}}/>
                 </ListItem>
               </>
             ))}
@@ -146,7 +150,7 @@ function Navbar({status, username, history, imageURI}){
             
           {!status ? 
           <React.Fragment>
-            <NavbarStyledMenu text="Enterprise"/>
+            <Button>Enterprise</Button>
             <ul className="nav-list">
                 <li>
                     <LoginSignUp pos="login" history={history}/>
@@ -157,7 +161,7 @@ function Navbar({status, username, history, imageURI}){
           </React.Fragment>
           : 
             <div style={{alignSelf: "center"}}>
-              <NavbarStyledMenu text="Enterprise"/>
+              <Button>Enterprise</Button>
               <div className="btnDivider"></div>
 
               <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleUserClick} startIcon={imageURI ? <img src={imageURI} style={{borderRadius: "50%", width: "50px"}}/>:<AccountCircleIcon style={{fontSize: "2.8rem", color: "#3BAFDA"}}/>}>
@@ -171,7 +175,7 @@ function Navbar({status, username, history, imageURI}){
                 onClose={handleUserClose}
               >
                 <MenuItem>
-                  <Link to="/profile" style={{color: "inherit"}}>Profile</Link>
+                  <Link to="/profile" style={{color: "inherit", width: "100%"}}>Profile</Link>
                 </MenuItem>
                 <MenuItem>My Purchases</MenuItem>
                 <MenuItem>Settings</MenuItem>
