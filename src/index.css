@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 body {
   margin: 0;
@@ -8,14 +8,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: Montserrat;
 }
 
 /* My CSS Code*/
 
-
-.navbar{
+.navbar {
   position: fixed;
   z-index: 100;
   top: 0px;
@@ -23,48 +27,46 @@ h1, h2, h3, h4, h5, h6{
   left: 0px;
   background-color: white;
   display: flex;
-  padding: .875em;
+  padding: 0.875em;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   border-bottom: 1px solid gray;
 }
 
-
-.coursera-logo{
+.coursera-logo {
   width: 8em;
   height: auto;
 }
 
-.navbar-btn{
-  background-color: #0056D2 !important;
+.navbar-btn {
+  background-color: #0056d2 !important;
   height: 42px;
   align-self: center;
   /* margin-left: 10px !important; */
 }
 
-.navbar-btn2{
+.navbar-btn2 {
   height: 42px;
   align-self: center;
   /* margin-left: 10px !important; */
 }
 
-.search-bar{
+.search-bar {
   align-self: center;
   vertical-align: bottom !important;
 }
 
-.search-bar > label{
-  font-size: .875rem !important;
+.search-bar > label {
+  font-size: 0.875rem !important;
 }
 
-.search-bar > div > input{
-  padding: .875em !important;
+.search-bar > div > input {
+  padding: 0.875em !important;
 }
 
-
-.search-bar-btn{
-  background-color: #0056D2 !important;
+.search-bar-btn {
+  background-color: #0056d2 !important;
   z-index: 10;
   left: -5px;
   height: 47px;
@@ -72,16 +74,16 @@ h1, h2, h3, h4, h5, h6{
   position: relative;
 }
 
-.nav-list > li{
+.nav-list > li {
   display: inline;
 }
 
-.nav-list{
+.nav-list {
   align-self: center;
   padding-left: 0px;
 }
 
-.nav-list a{
+.nav-list a {
   text-decoration: none;
   margin-left: 10px;
   color: black;
@@ -89,12 +91,12 @@ h1, h2, h3, h4, h5, h6{
   font-weight: 400;
 }
 
-.nav-list a:hover{
+.nav-list a:hover {
   text-decoration: underline;
-  color: #0056D2;
+  color: #0056d2;
 }
 
-.header{
+.header {
   padding: 1em;
   display: flex;
   flex-direction: row;
@@ -102,32 +104,32 @@ h1, h2, h3, h4, h5, h6{
   justify-content: center;
 }
 
-.header-div1{
+.header-div1 {
   display: flex;
   flex-direction: column;
   width: 400px;
 }
 
-.header-div1 > h1{
+.header-div1 > h1 {
   font-size: 3rem;
   margin-bottom: 0px;
 }
 
-.header-div1 > p{
+.header-div1 > p {
   font-size: 1.5rem;
 }
 
-.header-div2 > img{
+.header-div2 > img {
   width: 80%;
   height: auto;
 }
 
-.header-div2{
+.header-div2 {
   align-self: center;
   text-align: center;
 }
 
-.article1{
+.article1 {
   margin-top: 50px;
   display: flex;
   flex-direction: column;
@@ -136,23 +138,23 @@ h1, h2, h3, h4, h5, h6{
   background-color: rgb(235, 235, 235);
 }
 
-.article1-div{
+.article1-div {
   display: flex;
   flex-direction: row;
   margin-top: 10px;
   flex-wrap: wrap;
 }
 
-.article1-div > ul > li{
+.article1-div > ul > li {
   display: inline;
   margin-left: 15px;
 }
 
-.article1-div > ul{
+.article1-div > ul {
   padding: 0px;
 }
 
-.article2{
+.article2 {
   padding: 1em;
   margin-top: 50px;
   display: flex;
@@ -160,18 +162,18 @@ h1, h2, h3, h4, h5, h6{
   align-items: center;
 }
 
-.article2 > h2{
+.article2 > h2 {
   font-size: 2rem;
 }
 
-.article2-section{
+.article2-section {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   margin-top: 50px;
 }
 
-.article2-section-div{
+.article2-section-div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,7 +181,7 @@ h1, h2, h3, h4, h5, h6{
   text-align: center;
 }
 
-.article3{
+.article3 {
   display: flex;
   flex-direction: row;
   padding: 2em 0em;
@@ -188,95 +190,91 @@ h1, h2, h3, h4, h5, h6{
   background-color: rgb(235, 243, 255);
 }
 
-.article3-section{
+.article3-section {
   display: flex;
   flex-direction: column;
   width: 380px;
   margin-left: 20px;
 }
 
-.article3-section > h2{
+.article3-section > h2 {
   font-size: 2rem;
 }
 
-.article3-section > p{
+.article3-section > p {
   font-size: 1.5rem;
 }
 
-
-.signup-form-section{
+.signup-form-section {
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
 }
 
-.signup-form-section > h2{
+.signup-form-section > h2 {
   font-size: 2rem;
-  opacity: .8;
+  opacity: 0.8;
   margin-bottom: 0px;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-
-.article4{
+.article4 {
   padding: 3em;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.article4 > h2{
+.article4 > h2 {
   font-size: 2.5rem;
 }
 
-.article4 h4{
+.article4 h4 {
   font-size: 1.2rem;
 }
 
-
-.article4 h3{
+.article4 h3 {
   font-size: 2rem;
 }
 
-.article4 > section{
+.article4 > section {
   margin-top: 30px;
 }
 
-.article4 > img{
+.article4 > img {
   margin-top: 30px;
 }
 
-#coursera-community-section{
+#coursera-community-section {
   margin-top: 100px;
 }
 
-
-#coursera-community-section > h2{
+#coursera-community-section > h2 {
   font-size: 2.5rem;
 }
 
-#coursera-community-section > p{
+#coursera-community-section > p {
   font-size: 1.5rem;
   text-align: center;
 }
 
-.article4 p{
+.article4 p {
   font-size: 1.3rem;
 }
 
-.thumbs-wrapper{
+.thumbs-wrapper {
   text-align: center;
 }
 
-.carousel-root{
+.carousel-root {
   margin-top: 100px;
 }
 
-.article5{
+.article5 {
   padding: 1em;
   margin-top: 50px;
   display: flex;
@@ -285,28 +283,28 @@ a{
   background-color: rgb(249, 247, 239);
 }
 
-.article5 > img{
+.article5 > img {
   width: 60%;
   height: auto;
   align-self: flex-start;
 }
 
-.article5 > section{
+.article5 > section {
   display: flex;
   flex-direction: column;
   width: 300px;
   margin-left: 80px;
 }
 
-.article5 > section > h2{
+.article5 > section > h2 {
   font-size: 2.5rem;
 }
 
-.article5 > section > p{
+.article5 > section > p {
   font-size: 1.2rem;
 }
 
-.btnDivider{
+.btnDivider {
   height: 40px;
   vertical-align: middle;
   width: 2px;
@@ -314,7 +312,12 @@ a{
   display: inline-block;
 }
 
-.profile-main{
+.profile-main {
+  background-color: rgb(221, 221, 221);
+  height: 100vh;
+}
+
+.profile-main-article {
   margin-top: 80px;
   display: flex;
   flex-direction: column;
@@ -323,10 +326,85 @@ a{
   background-image: url(https://s3.amazonaws.com/coursera_assets/growth_account_profile/account_bg_black2.png);
 }
 
-.profile-main > *{
+.profile-main-article > * {
   color: white;
 }
 
-li.MuiListItem-root > button.MuiButtonBase-root{
+.achievements-article {
+  margin: 20px;
+  padding: 2em;
+  margin-top: 0px;
+  background-color: white;
+  position: relative;
+  bottom: 30px;
+}
+
+.achievements-article-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.achievements-article-section > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.achievements-article-section > div > h2 {
+  font-size: 2rem;
+}
+
+.achievements-article-section > div > a {
+  font-weight: bold;
+  color: black;
+  align-self: center;
+  position: relative;
+  left: 80px;
+}
+
+.achievements-article-section > div > a:hover {
+  text-decoration: underline;
+}
+
+li.MuiListItem-root > button.MuiButtonBase-root {
   justify-content: flex-start !important;
+}
+
+
+.achievements-article-section2{
+  display: flex;
+  margin-top: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.achievements-article-section2 > div{
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+  
+}
+
+.achievements-article-section2 > div > i{
+  font-size: 1.8rem;
+  align-self: center;
+  color: rgb(194, 209, 58);
+  margin-right: 10px;
+}
+
+.achievements-article-section2 > div > div{
+  display: flex;
+  flex-direction: column;
+  
+
+}
+
+.achievements-article-section2 > div > div > h6{
+  font-size: .9rem;
+  margin: 0px;
+}
+
+.achievements-article-section2 > div > div > span{
+  opacity: .6;
 }

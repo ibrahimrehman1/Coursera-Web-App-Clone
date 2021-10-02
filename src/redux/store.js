@@ -1,4 +1,6 @@
-import {createStore, combineReducers} from "redux";
-import {UserDataReducer, SubjectDataReducer} from "./reducer";
+import { createStore, combineReducers } from "redux";
+import { UserDataReducer, SubjectDataReducer, UserProfileDataReducer } from "./reducer";
 
-export const store = createStore(combineReducers({User: UserDataReducer, Subject: SubjectDataReducer}));
+export const store = createStore(
+  combineReducers({ User: UserDataReducer, Subject: SubjectDataReducer, Profile: UserProfileDataReducer })
+);

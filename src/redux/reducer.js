@@ -8,15 +8,12 @@ export const UserDataReducer = (state = initialUserState, action) =>{
     switch (action.type){
         case "USER_ID":
             return {...state, userID: action.payload};
-            break;
 
         case "USER_NAME":
             return {...state, username: action.payload}
-            break;
 
         case "IMAGE_URI":
             return {...state, imageURI: action.payload}
-            break;
 
         default:
             return state;
@@ -42,6 +39,25 @@ const initialSubjectState = {
 }
 
 export const SubjectDataReducer = (state=initialSubjectState, action) =>{
+    switch(action.type){
+        default:
+            return state;
+    }
+}
+
+const initialUserProfileData = {
+    achievements: [
+        {courseName: "Building Modern Node.js Applications on AWS", completionDate: "May 30 2021"},
+        {courseName: "Building Modern Node.js Applications on AWS", completionDate: "May 30 2021"},
+        {courseName: "Building Modern Node.js Applications on AWS", completionDate: "May 30 2021"},
+        {courseName: "Building Modern Node.js Applications on AWS", completionDate: "May 30 2021"},
+        {courseName: "Building Modern Node.js Applications on AWS", completionDate: "May 30 2021"},
+        {courseName: "Building Modern Node.js Applications on AWS", completionDate: "May 30 2021"},
+    ]
+}
+
+
+export const UserProfileDataReducer = (state = initialUserProfileData, action) =>{
     switch(action.type){
         default:
             return state;
