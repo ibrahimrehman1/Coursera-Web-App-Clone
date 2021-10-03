@@ -2,7 +2,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {updateUsername} from "../redux/actions";
 import React from "react";
 import {Navbar} from "./NavbarComponent.jsx";
-
+import {Helmet} from "react-helmet";
 
 function HomeComponent(){
   let username;
@@ -47,7 +47,9 @@ function HomeComponent(){
 
   return(
     <React.Fragment>
-
+       <Helmet>
+        <title>Coursera | Online Courses &amp; Credentials From Top Educators</title>
+      </Helmet>
       {localStorage.length ? <><Navbar status={true} username={username} imageURI={imageURI}/>
       </>: setTimeout(()=>window.location.assign("/"), 5000)}
       

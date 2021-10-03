@@ -53,6 +53,13 @@ const initialUserProfileData = {
         {courseName: "Building Modern Node.js Applications on AWS", completionDate: "May 30 2021"},
         {courseName: "Building Modern Node.js Applications on AWS", completionDate: "May 30 2021"},
         {courseName: "Building Modern Node.js Applications on AWS", completionDate: "May 30 2021"},
+    ],
+    workExperienceAndEducation: [
+        {title: "Student", description: "Junior / Entry-level (0-2 years experience) · Unemployed and looking for work"},
+        {title: "Teacher", description: "Junior / Entry-level (0-2 years experience) · Unemployed and looking for work"},
+
+        {title: "Intern", description: "Junior / Entry-level (0-2 years experience) · Unemployed and looking for work"},
+
     ]
 }
 

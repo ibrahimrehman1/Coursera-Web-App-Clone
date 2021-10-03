@@ -313,8 +313,10 @@ a {
 }
 
 .profile-main {
-  background-color: rgb(221, 221, 221);
-  height: 100vh;
+  background-color: rgb(241, 241, 241);
+  margin-bottom: -100px;
+  padding-bottom: 2em;
+  
 }
 
 .profile-main-article {
@@ -407,4 +409,68 @@ li.MuiListItem-root > button.MuiButtonBase-root {
 
 .achievements-article-section2 > div > div > span{
   opacity: .6;
+}
+
+
+.footer{
+  background-color: transparent;
+  padding: 2em;
+  margin-top: 80px;
+
+}
+
+.footer > div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.coursera-footer-list{
+  list-style-type: none;
+  padding: 0px;
+
+}
+
+.app-img-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-img-div > img{
+  margin: 10px 0px;
+}
+
+.header-social-div{
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+
+.header-social-div > div{
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.header-social-div > div:hover{
+  transform: translateY(-6%);
+
+}
+
+.header-social-div > div:nth-child(n + 2){
+  margin-left: 10px;
+}
+
+.header-social-div > div > i{
+  color: white;
+  margin-top: 12px;
+  margin-left: 13px;
+}
+
+.footer li:hover{
+  text-decoration: underline;
+  cursor: pointer;
 }

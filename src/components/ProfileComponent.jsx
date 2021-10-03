@@ -2,7 +2,9 @@ import React from "react";
 import { Navbar } from "./NavbarComponent.jsx";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUsername } from "../redux/actions";
-import { Divider } from "@material-ui/core";
+import { Divider, Button } from "@material-ui/core";
+import { Helmet } from "react-helmet";
+import FooterComponent from "./FooterComponent.jsx";
 
 function ProfileComponent() {
   let username;
@@ -20,11 +22,15 @@ function ProfileComponent() {
 
   console.log(username);
 
-  var achievements = useSelector((state)=>{
-      return state.Profile.achievements;
-  })
+  var achievements = useSelector((state) => {
+    return state.Profile.achievements;
+  });
 
-  console.log(achievements);
+  var workExperienceAndEducation = useSelector((state) => {
+    return state.Profile.workExperienceAndEducation;
+  });
+
+  console.log(workExperienceAndEducation);
 
   React.useEffect(() => {
     if (!username) {
@@ -53,6 +59,9 @@ function ProfileComponent() {
     }) || localStorage.getItem("imageURI");
   return (
     <>
+      <Helmet>
+        <title>{username} | Coursera</title>
+      </Helmet>
       <Navbar status={true} username={username} imageURI={imageURI} />
       <main className="profile-main">
         <article className="profile-main-article">
@@ -82,23 +91,53 @@ function ProfileComponent() {
           </section>
           <Divider />
           <section className="achievements-article-section2">
-                {
-                    
-                    achievements.map((val, index)=>{
-                        if (index < 4){
-                            return (<div key={index}>
-                            <i class="fas fa-certificate"></i>
-                            <div>
-                                <h6>{val.courseName}</h6>
-                                <span>Achieved {val.completionDate}</span>
-                            </div>
-                            </div>
-                            );
-                        }
-                    })
-                }
+            {achievements.map((val, index) => {
+              if (index < 4) {
+                return (
+                  <div key={index}>
+                    <i class="fas fa-certificate"></i>
+                    <div>
+                      <h6>{val.courseName}</h6>
+                      <span>Achieved {val.completionDate}</span>
+                    </div>
+                  </div>
+                );
+              }
+            })}
           </section>
         </article>
+        <article className="achievements-article">
+          <section className="achievements-article-section">
+            <div>
+              <h2>Work Experience and Education</h2>
+            </div>
+          </section>
+          <Divider />
+          <ul style={{ listStyleType: "none" }}>
+            {workExperienceAndEducation.map((val, index) => {
+              return (
+                <li key={index}>
+                  <div>
+                    <h4>{val.title}</h4>
+                    <h6>{val.description}</h6>
+                  </div>
+                  <Divider />
+                </li>
+              );
+            })}
+          </ul>
+        </article>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Button
+            variant="contained"
+            color="primary"
+            className="navbar-btn"
+            style={{ marginLeft: "10px" }}
+          >
+            <strong>Edit Profile</strong>
+          </Button>
+        </div>
+        
       </main>
     </>
   );

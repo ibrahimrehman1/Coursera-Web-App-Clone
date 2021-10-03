@@ -6,12 +6,15 @@ import "./index.css";
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {store} from "./redux/store";
+import LayoutComponent from './components/LayoutComponent.jsx';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
+      <LayoutComponent>
         <App />
+      </LayoutComponent>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
