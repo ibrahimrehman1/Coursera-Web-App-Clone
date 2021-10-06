@@ -36,9 +36,10 @@ function Navbar() {
     return state.Subject.subjects;
   });
 
-  let username = useSelector((state) => {
-    return state.User.username;
-  });
+  let username =
+    useSelector((state) => {
+      return state.User.username;
+    }) || localStorage.getItem("username");
 
   let imageURI =
     useSelector((state) => {
@@ -234,8 +235,17 @@ function Navbar() {
               </Link>
             </MenuItem>
             <MenuItem>Settings</MenuItem>
-            <MenuItem>Updates</MenuItem>
-            <MenuItem>Accomplishments</MenuItem>
+            <MenuItem>
+              <Link to="/updates" style={{ color: "inherit", width: "100%" }}>
+                Updates
+              </Link>
+            </MenuItem>
+            <MenuItem>
+            <Link to="/accomplishments" style={{ color: "inherit", width: "100%" }}>
+
+            Accomplishments
+            </Link>
+            </MenuItem>
             <MenuItem>Help Center</MenuItem>
             <MenuItem onClick={() => handleUserLogout("logout")}>
               Logout

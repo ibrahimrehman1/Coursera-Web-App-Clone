@@ -474,3 +474,28 @@ li.MuiListItem-root > button.MuiButtonBase-root {
   text-decoration: underline;
   cursor: pointer;
 }
+
+.purchases-article, .updates-article, .accomplishments-article{
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+}
+
+.purchases-article > h2, .updates-article > h2, .accomplishments-article > h2{
+  margin-top: 100px;
+  font-size: 2rem;
+}
+
+.purchases-article > span{
+  margin: 5px 0px;
+}
+
+
+
+.purchases-table{
+  padding: 0em 1em;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

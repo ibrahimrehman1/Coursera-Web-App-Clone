@@ -9,7 +9,10 @@ function ProfileComponent() {
   });
 
   const {username, imageURI} = useSelector((state)=>{
-    return state.User;
+    if (state.User.imageURI){
+      return state.User;
+    }
+    return {username: localStorage.getItem("username"), imageURI: localStorage.getItem("imageURI")};
   });
 
 
