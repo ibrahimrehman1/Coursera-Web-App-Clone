@@ -7,13 +7,10 @@ const initialUserState = {
 export const UserDataReducer = (state = initialUserState, action) =>{
     switch (action.type){
         case "USER_ID":
-            return {...state, userID: action.payload};
+            return {...state, userID: action.payload.userID};
 
-        case "USER_NAME":
-            return {...state, username: action.payload}
-
-        case "IMAGE_URI":
-            return {...state, imageURI: action.payload}
+        case "SET_USER_DATA":
+            return {...state, username: action.payload.username, imageURI: action.payload.imageURI}
 
         default:
             return state;

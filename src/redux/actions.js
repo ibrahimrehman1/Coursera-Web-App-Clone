@@ -5,20 +5,12 @@ const updateID = (id) =>{
     }
 }
 
-const updateUsername = (username) =>{
+const setUserData = (username, imageURI) =>{
     return{
-        type: "USER_NAME",
-        payload: username
-    }
-}
-
-const updateImageURI = (imageURI) =>{
-    return{
-        type: "IMAGE_URI",
-        payload: imageURI
+        type: "SET_USER_DATA",
+        payload: {username, imageURI}
     }
 }
 
 
-
-export {updateID, updateUsername, updateImageURI};
+export {updateID, setUserData};

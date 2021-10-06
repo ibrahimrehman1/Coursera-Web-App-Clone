@@ -6,7 +6,8 @@ import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import Modal from "@material-ui/core/Modal";
 import { makeStyles, TextField, Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { updateID, updateUsername, updateImageURI } from "../redux/actions";
+import {useHistory} from "react-router-dom";
+import { updateID, setUserData } from "../redux/actions";
 import { GoogleLogin } from "react-google-login";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 
@@ -24,9 +25,11 @@ const useStyles2 = makeStyles((theme) => ({
   },
 }));
 
-export function LoginSignUp({ pos, history }) {
+export function LoginSignUp({ pos }) {
   const classes2 = useStyles2();
   const [open, setOpen] = useState(false);
+
+  const history = useHistory();
 
   /* For First Modal*/
   const handleOpen = () => {
@@ -59,7 +62,7 @@ export function LoginSignUp({ pos, history }) {
         localStorage.setItem("token", userData.token);
         console.log(userData);
         dispatch(updateID(userData.userID));
-        dispatch(updateUsername(userData.username));
+        dispatch(setUserData(userData.username, ""));
         history.push("/home");
 
       } catch (err) {
@@ -83,8 +86,9 @@ export function LoginSignUp({ pos, history }) {
           },
         });
         let userData = await data.json();
+        console.log(userData);
         dispatch(updateID(userData.userID));
-        dispatch(updateUsername(userData.username));
+        dispatch(setUserData(userData.username, ""));
         localStorage.setItem("token", userData.token);
         history.push("/home");
         console.log(userData);
@@ -133,11 +137,10 @@ export function LoginSignUp({ pos, history }) {
   }
 
   const googleSuccess = async (res) => {
-    console.log(res);
+    // console.log(res);
     const username = res.profileObj.name;
     const imageUrl = res.profileObj.imageUrl;
-    dispatch(updateUsername(username));
-    dispatch(updateImageURI(imageUrl));
+    dispatch(setUserData(username, imageUrl));
     localStorage.setItem("access_token", res.tokenObj.access_token);
     localStorage.setItem("username", username);
     localStorage.setItem("imageURI", imageUrl);
@@ -151,7 +154,7 @@ export function LoginSignUp({ pos, history }) {
   const responseFacebook = (res) => {
     console.log(res);
     const username = res.name;
-    dispatch(updateUsername(username));
+    dispatch(setUserData(username, ""));
     localStorage.setItem("access_token", res.accessToken);
     localStorage.setItem("username", username);
     history.push("/home");
