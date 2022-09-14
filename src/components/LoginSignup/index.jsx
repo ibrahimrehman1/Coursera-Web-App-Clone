@@ -7,7 +7,7 @@ import Modal from "@material-ui/core/Modal";
 import { makeStyles, TextField, Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import {useHistory} from "react-router-dom";
-import { updateID, setUserData } from "../redux/actions";
+import { updateID, setUserData } from "../../redux/actions";
 import { GoogleLogin } from "react-google-login";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 
@@ -25,7 +25,7 @@ const useStyles2 = makeStyles((theme) => ({
   },
 }));
 
-export function LoginSignUp({ pos }) {
+export default function LoginSignup({ pos }) {
   const classes2 = useStyles2();
   const [open, setOpen] = useState(false);
 

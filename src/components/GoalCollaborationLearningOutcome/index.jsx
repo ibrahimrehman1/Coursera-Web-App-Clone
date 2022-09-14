@@ -8,7 +8,6 @@ import Umich from "../../assets/umich.jpg"
 import Penn from "../../assets/penn.png"
 import Imperial from "../../assets/imperial.png"
 import ImageNextStep from "../../assets/Image-Next-Step.png";
-import {LoginSignUp} from "./../LoginSignUpComponent.jsx";
 import TopQualityImg from "../../assets/top-quality-image.png";
 import AccessibleCerts from "../../assets/accessible-updated-certs.png";
 import AppliedLearning from "../../assets/applied-learning.png";
@@ -21,6 +20,7 @@ import IconLearn from "../../assets/Icon-Learn.png";
 import IconEarn from "../../assets/Icon-Earn-Degree.png";
 import IconGet from "../../assets/Icon-Get-Ready.png";
 import IconUpskill from "../../assets/Icon-Upskill-your-org.png";
+import LoginSignup from "../LoginSignup";
 
 
 export default function GoalColloborationLearningOutcome(){
@@ -105,7 +105,7 @@ export default function GoalColloborationLearningOutcome(){
                     <h2>Learner outcomes on Coursera</h2>
                     <p>87% of people learning for professional development report career benefits like getting a promotion, a raise, or starting a new career</p>
                     <span>- Coursera Learner Outcomes Survey (2019)</span>
-                    <LoginSignUp pos="signuparticle3"/>
+                    <LoginSignup pos="signuparticle3"/>
                     <Button variant="contained" color="primary" className="navbar-btn" style={{alignSelf: "flex-start", marginTop: "20px"}} >
                         <strong>Try Coursera for Business</strong>
                     </Button>
@@ -167,7 +167,7 @@ export default function GoalColloborationLearningOutcome(){
                     <h2>Take the next step toward your personal and professional goals with Coursera.</h2>
                     <p style={{marginBottom: "50px"}}>Join now to receive personalized recommendations from the full Coursera catalog.
                     oin for Free</p>
-                    <LoginSignUp pos="signupheader"/>
+                    <LoginSignup pos="signupheader"/>
                 </section>
             </article>
         </article>

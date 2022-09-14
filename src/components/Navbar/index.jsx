@@ -5,10 +5,10 @@ import { Button, TextField } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import { NavbarStyledMenu } from "../NavbarStyledMenuComponent.jsx";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
-import { LoginSignUp } from "../LoginSignUpComponent.jsx";
 import { Link } from "react-router-dom";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { useSelector } from "react-redux";
+import LoginSignup from "../LoginSignup";
 
 import {
   SwipeableDrawer,
@@ -188,10 +188,10 @@ export default function Navbar() {
           <Button>Enterprise</Button>
           <ul className="nav-list">
             <li>
-              <LoginSignUp pos="login" />
+              <LoginSignup pos="login" />
             </li>
           </ul>
-          <LoginSignUp pos="signup" />
+          <LoginSignup pos="signup" />
         </React.Fragment>
       ) : (
         <div style={{ alignSelf: "center" }}>
