@@ -5,7 +5,6 @@ export default function Accomplishments() {
         <>
         <article className="accomplishments-article">
             <h2>My Courses</h2>
-
         </article>
     </>
     )

@@ -38,7 +38,7 @@ const StyledMenu = withStyles({
 
 
 
-export function NavbarStyledMenu({subject, styleProps}){
+export default function NavbarMenu({subject, styleProps}){
     const [anchorEl, setAnchorEl] = useState(null);
 
     const handleClick = (event) => {

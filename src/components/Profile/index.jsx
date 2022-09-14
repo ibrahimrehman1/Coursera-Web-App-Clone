@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Divider, Button } from "@material-ui/core";
 import { Helmet } from "react-helmet";
 
-function ProfileComponent() {
+export default function ProfileComponent() {
   const {achievements, workExperienceAndEducation} = useSelector((state) => {
     return state.Profile;
   });
@@ -100,5 +100,3 @@ function ProfileComponent() {
     </>
   );
 }
-
-export { ProfileComponent };

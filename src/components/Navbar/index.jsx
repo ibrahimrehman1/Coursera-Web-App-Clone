@@ -3,7 +3,7 @@ import clsx from "clsx";
 import CourseraLogo from "../../assets/CourseraLogo.png";
 import { Button, TextField } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import { NavbarStyledMenu } from "../NavbarStyledMenuComponent.jsx";
+import NavbarMenu from "../NavbarMenu";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import { Link } from "react-router-dom";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
@@ -103,7 +103,7 @@ export default function Navbar() {
         {subjects.map((subject, index) => (
           <>
             <ListItem key={index}>
-              <NavbarStyledMenu
+              <NavbarMenu
                 subject={subject}
                 styleProps={{ width: "100%" }}
               />
