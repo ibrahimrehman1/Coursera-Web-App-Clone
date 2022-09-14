@@ -1,18 +1,18 @@
 import React from "react";
 import Header from "./Header";
-import { ArticleOne } from "./ArticleOneComponent.jsx";
+import GoalColloborationLearningOutcome from "./GoalCollaborationLearningOutcome";
 
 export default function FirstMainComponent({ history }) {
     if (localStorage.length) {
       history.push("/home");
     }
     return (
-      <React.Fragment>
+      <>
         <main>
           <Header />
-          <ArticleOne />
+          <GoalColloborationLearningOutcome />
         </main>
-      </React.Fragment>
+      </>
     );
   }
   

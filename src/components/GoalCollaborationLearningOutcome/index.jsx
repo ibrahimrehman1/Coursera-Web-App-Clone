@@ -1,29 +1,29 @@
 import React from "react";
-import Illinois from "../assets/illinois.png"
-import Duke from "../assets/duke.png"
-import Google from "../assets/google.png"
-import IBM from "../assets/ibm.png"
-import Stanford from "../assets/stanford.png"
-import Umich from "../assets/umich.jpg"
-import Penn from "../assets/penn.png"
-import Imperial from "../assets/imperial.png"
-import ImageNextStep from "../assets/Image-Next-Step.png";
-import {LoginSignUp} from "./LoginSignUpComponent.jsx";
-import TopQualityImg from "../assets/top-quality-image.png";
-import AccessibleCerts from "../assets/accessible-updated-certs.png";
-import AppliedLearning from "../assets/applied-learning.png";
-import CertificateCrop from "../assets/certificate-crop.png";
+import Illinois from "../../assets/illinois.png"
+import Duke from "../../assets/duke.png"
+import Google from "../../assets/google.png"
+import IBM from "../../assets/ibm.png"
+import Stanford from "../../assets/stanford.png"
+import Umich from "../../assets/umich.jpg"
+import Penn from "../../assets/penn.png"
+import Imperial from "../../assets/imperial.png"
+import ImageNextStep from "../../assets/Image-Next-Step.png";
+import {LoginSignUp} from "./../LoginSignUpComponent.jsx";
+import TopQualityImg from "../../assets/top-quality-image.png";
+import AccessibleCerts from "../../assets/accessible-updated-certs.png";
+import AppliedLearning from "../../assets/applied-learning.png";
+import CertificateCrop from "../../assets/certificate-crop.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import Outcomes from "../assets/outcomes.png";
+import Outcomes from "../../assets/outcomes.png";
 import {Button} from "@material-ui/core"
-import IconLearn from "../assets/Icon-Learn.png";
-import IconEarn from "../assets/Icon-Earn-Degree.png";
-import IconGet from "../assets/Icon-Get-Ready.png";
-import IconUpskill from "../assets/Icon-Upskill-your-org.png";
+import IconLearn from "../../assets/Icon-Learn.png";
+import IconEarn from "../../assets/Icon-Earn-Degree.png";
+import IconGet from "../../assets/Icon-Get-Ready.png";
+import IconUpskill from "../../assets/Icon-Upskill-your-org.png";
 
 
-function ArticleOne(){
+export default function GoalColloborationLearningOutcome(){
     return(
         <article>
             <article className="article1">
@@ -174,4 +174,3 @@ function ArticleOne(){
     )
 }
 
-export {ArticleOne};
