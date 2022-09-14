@@ -1,24 +1,12 @@
-import React from "react";
-import { Header } from "./components/HeaderComponent.jsx";
-import { ArticleOne } from "./components/ArticleOneComponent.jsx";
 import Router from "./router";
-
-export function FirstMainComponent({ history }) {
-  if (localStorage.length) {
-    history.push("/home");
-  }
-  return (
-    <React.Fragment>
-      <main>
-        <Header />
-        <ArticleOne />
-      </main>
-    </React.Fragment>
-  );
-}
+import LayoutComponent from "./components/LayoutComponent.jsx";
 
 function App() {
-  return <Router />;
+  return (
+    <LayoutComponent>
+      <Router />
+    </LayoutComponent>
+  );
 }
 
 export default App;

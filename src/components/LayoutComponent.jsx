@@ -1,16 +1,13 @@
 import React from "react";
-import FooterComponent from "./FooterComponent";
-import { useSelector } from "react-redux";
-import {Navbar} from "./NavbarComponent.jsx";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 
-
-export default function LayoutComponent({children}){
-
-    return(
-        <>
-        <Navbar />
-        {children}
-        <FooterComponent />
-        </>
-    )
+export default function LayoutComponent({ children }) {
+  return (
+    <>
+      <Navbar />
+      {children}
+      <Footer />
+    </>
+  );
 }
