@@ -1,5 +1,5 @@
 import React from "react";
-import { Header } from "./HeaderComponent.jsx";
+import Header from "./Header";
 import { ArticleOne } from "./ArticleOneComponent.jsx";
 
 export default function FirstMainComponent({ history }) {

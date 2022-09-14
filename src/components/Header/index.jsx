@@ -1,10 +1,10 @@
 import React from "react";
 import {Button} from "@material-ui/core";
-import HeroImg from "../assets/hero-b.png";
-import {LoginSignUp} from "./LoginSignUpComponent.jsx";
+import HeroImg from "../../assets/hero-b.png";
+import {LoginSignUp} from "../LoginSignUpComponent.jsx";
 
 
-function Header(){
+export default function Header(){
     return(
         <header className="header">
             <div className="header-div1">
@@ -18,5 +18,3 @@ function Header(){
         </header>
     )
 }
-
-export {Header};

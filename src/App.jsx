@@ -1,11 +1,11 @@
 import Router from "./router";
-import LayoutComponent from "./components/LayoutComponent.jsx";
+import Layout from "./Layout";
 
 function App() {
   return (
-    <LayoutComponent>
+    <Layout>
       <Router />
-    </LayoutComponent>
+    </Layout>
   );
 }
 
